@@ -60,7 +60,7 @@ class TiposAutomovilController(context: Context) {
         )
     }
 
-    fun deleteTipoAutomovil(id: Int): Int {
+    fun deleteTipoAutomovilbyid(id: Int): Int {
         return db.delete("tipos_automovil", "idtipo_automovil = ?", arrayOf(id.toString()))
     }
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.controladores.MarcasController
 import com.example.cars_motors.databinding.FragmentMarcasBinding
+import com.example.cars_motors.ui.Favoritos.FavoritosAdapter
 
 class MarcasFragment : Fragment() {
 
@@ -33,11 +34,11 @@ class MarcasFragment : Fragment() {
         _binding = FragmentMarcasBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val marcasController = MarcasController(requireContext())
-        val listaAutos = marcasController.getAllMarcas()
+        val listaAutos = marcasController.getAllMarcas().toMutableList()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = MarcasAdapter(requireContext(), listaAutos)
+        grupoAdapter = MarcasAdapter(requireContext(), listaAutos, marcasController)
         recyclerView.adapter = grupoAdapter
 
         return root

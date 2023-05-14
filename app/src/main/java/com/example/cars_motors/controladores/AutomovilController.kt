@@ -123,4 +123,9 @@ class AutomovilController(context: Context) {
             arrayOf(automovil.id.toString())
         )
     }
+
+    fun deleteAutomovilById(id: Int): Int {
+        return db.delete("automovil", "idautomovil = ?", arrayOf(id.toString()))
+    }
+
 }

@@ -126,7 +126,7 @@ class UsuariosController(context: Context) {
         }
     }
 
-    fun deleteUsuario(id: Int): Int {
+    fun deleteUsuariobyid(id: Int): Int {
         return db.delete("usuarios", "idusuario = ?", arrayOf(id.toString()))
     }
 

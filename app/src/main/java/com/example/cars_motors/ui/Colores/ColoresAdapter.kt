@@ -4,17 +4,29 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.R
+import com.example.cars_motors.controladores.AutomovilController
 import com.example.cars_motors.controladores.ColoresController
 import com.example.cars_motors.modelos.ColorModel
 import com.example.cars_motors.databinding.ItemlistColoresCrudBinding
 
-class ColoresAdapter(private val mContext: Context, private val listaGrupos: List<ColorModel>) : RecyclerView.Adapter<ColoresAdapter.ViewHolder>() {
+class ColoresAdapter(private val mContext: Context, private val listaGrupos: MutableList<ColorModel>,private val coloresController: ColoresController ) : RecyclerView.Adapter<ColoresAdapter.ViewHolder>() {
 
+    fun eliminarItem(position: Int) {
+        val automovil = listaGrupos[position]
+        val deletedRows = coloresController.deleteColorbyid(automovil.id)
+        if (deletedRows > 0) {
+            listaGrupos.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, listaGrupos.size - position)
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemlistColoresCrudBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
@@ -22,7 +34,16 @@ class ColoresAdapter(private val mContext: Context, private val listaGrupos: Lis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val grupo = listaGrupos[position]
-        holder.bind(grupo, position)
+        holder.itemView.findViewById<TextView>(R.id.Nombre).text = grupo.nombre
+        holder.itemView.findViewById<TextView>(R.id.id).text = grupo.id.toString()
+
+        holder.itemView.findViewById<Button>(R.id.btnModificar).setOnClickListener {
+            // TODO: implementar acción para el botón "ver"
+        }
+
+        holder.itemView.findViewById<Button>(R.id.btnEliminar).setOnClickListener {
+            eliminarItem(position)
+        }
     }
 
     override fun getItemCount(): Int {

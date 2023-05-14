@@ -32,16 +32,19 @@ class AutomovilesFragment : Fragment() {
 
         _binding = FragmentAutosBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val tiposController = AutomovilController(requireContext())
-        val listaAutos = tiposController.getAllAutomoviles()
+        val autoController = AutomovilController(requireContext())
+        val listaAutos = autoController.getAllAutomoviles().toMutableList()
+
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = AutomovilesAdapter(requireContext(), listaAutos)
+        grupoAdapter = AutomovilesAdapter(requireContext(), listaAutos, autoController)
+
         recyclerView.adapter = grupoAdapter
 
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
