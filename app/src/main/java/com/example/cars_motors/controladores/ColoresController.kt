@@ -59,7 +59,7 @@ class ColoresController(context: Context) {
         )
     }
 
-    fun deleteColor(id: Int): Int {
+    fun deleteColorbyid(id: Int): Int {
         return db.delete("colores", "idcolor = ?", arrayOf(id.toString()))
     }
 

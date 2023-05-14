@@ -18,8 +18,7 @@ class UsuariosFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var grupoAdapter: UsuariosAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,12 +31,12 @@ class UsuariosFragment : Fragment() {
 
         _binding = FragmentUsuariosBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val automvilController = UsuariosController(requireContext())
-        val listaAutos = automvilController.getAllUsuarios()
+        val usuariosController = UsuariosController(requireContext())
+        val listaUsuarios = usuariosController.getAllUsuarios().toMutableList()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = UsuariosAdapter(requireContext(), listaAutos)
+        grupoAdapter = UsuariosAdapter(requireContext(), listaUsuarios, usuariosController)
         recyclerView.adapter = grupoAdapter
 
         return root

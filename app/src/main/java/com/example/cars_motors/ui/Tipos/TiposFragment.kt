@@ -32,11 +32,11 @@ class TiposFragment : Fragment() {
         _binding = FragmentTiposBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val tiposController = TiposAutomovilController(requireContext())
-        val listaAutos = tiposController.getAllTiposAutomovil()
+        val listaAutos = tiposController.getAllTiposAutomovil().toMutableList()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = TiposAdapter(requireContext(), listaAutos)
+        grupoAdapter = TiposAdapter(requireContext(), listaAutos,tiposController)
         recyclerView.adapter = grupoAdapter
 
         return root

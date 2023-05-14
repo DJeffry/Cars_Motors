@@ -32,11 +32,11 @@ class ColoresFragment : Fragment() {
         _binding = FragmentColoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val colorController = ColoresController(requireContext())
-        val listaAutos = colorController.getAllColores()
+        val listaAutos = colorController.getAllColores().toMutableList()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = ColoresAdapter(requireContext(), listaAutos)
+        grupoAdapter = ColoresAdapter(requireContext(), listaAutos, colorController)
         recyclerView.adapter = grupoAdapter
 
         return root

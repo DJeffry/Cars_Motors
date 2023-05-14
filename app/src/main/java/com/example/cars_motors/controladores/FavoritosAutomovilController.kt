@@ -57,7 +57,7 @@ class FavoritosAutomovilController(context: Context) {
         return favoritos
     }
 
-    fun deleteFavoritoAutomovil(id: Int): Int {
+    fun deleteFavoritoAutomovilbyid(id: Int): Int {
         return db.delete("favoritos_automovil", "idfavoritosautomovil = ?", arrayOf(id.toString()))
     }
 

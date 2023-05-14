@@ -60,7 +60,7 @@ class MarcasController(context: Context) {
         )
     }
 
-    fun deleteMarca(id: Int): Int {
+    fun deleteMarcabyid(id: Int): Int {
         return db.delete("marcas", "idmarca = ?", arrayOf(id.toString()))
     }
 

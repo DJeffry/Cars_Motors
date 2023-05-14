@@ -32,11 +32,11 @@ class FavoritosFragment : Fragment() {
         _binding = FragmentFavoritosBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val automvilController = FavoritosAutomovilController(requireContext())
-        val listaAutos = automvilController.getAllFavoritosAutomovil()
+        val listaAutos = automvilController.getAllFavoritosAutomovil().toMutableList()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = FavoritosAdapter(requireContext(), listaAutos)
+        grupoAdapter = FavoritosAdapter(requireContext(), listaAutos, automvilController)
         recyclerView.adapter = grupoAdapter
 
         return root
