@@ -16,7 +16,7 @@ class UsuariosController(context: Context) {
     object SessionManager {
         private var currentUser: Usuario? = null
 
-        fun setCurrentUser(user: Usuario) {
+        fun setCurrentUser(user: Usuario?) {
             currentUser = user
         }
 

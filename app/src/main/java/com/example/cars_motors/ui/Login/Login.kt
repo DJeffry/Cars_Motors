@@ -8,7 +8,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cars_motors.MainActivity
-import com.example.cars_motors.ui.Login.Register
 import com.example.cars_motors.R
 import com.example.cars_motors.controladores.UsuariosController
 
