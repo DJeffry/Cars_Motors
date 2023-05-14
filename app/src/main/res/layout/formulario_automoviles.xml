@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lblModelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modelo"
+        app:layout_constraintBottom_toTopOf="@+id/lblNumeroVin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="7dp" />
+
+    <EditText
+        android:id="@+id/txtModeloAutomovil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/lblNumeroVin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numero Vin"
+        app:layout_constraintBottom_toTopOf="@+id/lblChasis"
+        app:layout_constraintEnd_toEndOf="@+id/lblModelo"
+        app:layout_constraintStart_toStartOf="@+id/lblModelo"
+        app:layout_constraintTop_toBottomOf="@+id/lblModelo" />
+
+    <EditText
+        android:id="@+id/txtNumeroVin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/lblChasis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chasis"
+        app:layout_constraintBottom_toTopOf="@+id/lblNumeroMotor"
+        app:layout_constraintEnd_toEndOf="@+id/lblNumeroVin"
+        app:layout_constraintStart_toStartOf="@+id/lblNumeroVin"
+        app:layout_constraintTop_toBottomOf="@+id/lblNumeroVin" />
+
+    <EditText
+        android:id="@+id/txtChasis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/lblNumeroMotor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numero de Motor"
+        app:layout_constraintBottom_toTopOf="@+id/lblNumeroAsientos"
+        app:layout_constraintEnd_toEndOf="@+id/lblChasis"
+        app:layout_constraintStart_toStartOf="@+id/lblChasis"
+        app:layout_constraintTop_toBottomOf="@+id/lblChasis" />
+    <EditText
+        android:id="@+id/txtNumeroMotor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+    <TextView
+        android:id="@+id/lblNumeroAsientos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numero de Asientos"
+        app:layout_constraintBottom_toTopOf="@+id/lblCapacidadAsientos"
+        app:layout_constraintEnd_toEndOf="@+id/lblNumeroMotor"
+        app:layout_constraintStart_toStartOf="@+id/lblNumeroMotor"
+        app:layout_constraintTop_toBottomOf="@+id/lblNumeroMotor" />
+    <EditText
+        android:id="@+id/txtNumeroAsientos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+    <TextView
+        android:id="@+id/lblCapacidadAsientos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capacidad asientos"
+        app:layout_constraintBottom_toTopOf="@+id/lblAnio"
+        app:layout_constraintEnd_toEndOf="@+id/lblNumeroAsientos"
+        app:layout_constraintStart_toStartOf="@+id/lblNumeroAsientos"
+        app:layout_constraintTop_toBottomOf="@+id/lblNumeroAsientos" />
+    <EditText
+        android:id="@+id/txtModeloAutomovil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+    <TextView
+        android:id="@+id/lblAnio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Año"
+        app:layout_constraintBottom_toTopOf="@+id/lblPrecio"
+        app:layout_constraintEnd_toEndOf="@+id/lblCapacidadAsientos"
+        app:layout_constraintStart_toStartOf="@+id/lblCapacidadAsientos"
+        app:layout_constraintTop_toBottomOf="@+id/lblCapacidadAsientos" />
+
+    <TextView
+        android:id="@+id/lblPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio"
+        app:layout_constraintBottom_toTopOf="@+id/lblDescripcion"
+        app:layout_constraintEnd_toEndOf="@+id/lblAnio"
+        app:layout_constraintStart_toStartOf="@+id/lblAnio"
+        app:layout_constraintTop_toBottomOf="@+id/lblAnio" />
+
+    <TextView
+        android:id="@+id/lblDescripcion"
+        android:layout_width="91dp"
+        android:layout_height="14dp"
+        android:text="Descripción"
+        app:layout_constraintBottom_toTopOf="@+id/lblMarca"
+        app:layout_constraintEnd_toEndOf="@+id/lblPrecio"
+        app:layout_constraintStart_toStartOf="@+id/lblPrecio"
+        app:layout_constraintTop_toBottomOf="@+id/lblPrecio" />
+
+    <TextView
+        android:id="@+id/lblMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marca"
+        app:layout_constraintBottom_toTopOf="@+id/lblTipoAuto"
+        app:layout_constraintEnd_toEndOf="@+id/lblDescripcion"
+        app:layout_constraintStart_toStartOf="@+id/lblDescripcion"
+        app:layout_constraintTop_toBottomOf="@+id/lblDescripcion" />
+
+    <TextView
+        android:id="@+id/lblTipoAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo Auto"
+        app:layout_constraintBottom_toTopOf="@+id/lblColor"
+        app:layout_constraintEnd_toEndOf="@+id/lblMarca"
+        app:layout_constraintStart_toStartOf="@+id/lblMarca"
+        app:layout_constraintTop_toBottomOf="@+id/lblMarca" />
+
+    <TextView
+        android:id="@+id/lblColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Color"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/lblTipoAuto"
+        app:layout_constraintStart_toStartOf="@+id/lblTipoAuto"
+        app:layout_constraintTop_toBottomOf="@+id/lblTipoAuto" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lblColor"
+        app:layout_constraintStart_toStartOf="@+id/lblColor"
+        app:layout_constraintTop_toBottomOf="@+id/lblColor"
+        app:srcCompat="@drawable/ic_launcher_background" />
+</androidx.constraintlayout.widget.ConstraintLayout>

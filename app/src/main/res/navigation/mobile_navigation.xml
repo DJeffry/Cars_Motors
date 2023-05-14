@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_usuarios" />
 
     <fragment
+        android:id="@+id/vista_usuarios"
+        android:name="com.example.cars_motors.ui.Usuarios.UsuariosVistaFragment"
+        android:label="VistaUsuarios"
+        tools:layout="@layout/vista_usuarios" />
+
+    <fragment
         android:id="@+id/nav_colores"
         android:name="com.example.cars_motors.ui.Colores.ColoresFragment"
         android:label="Colores"
@@ -43,4 +49,14 @@
         android:name="com.example.cars_motors.ui.Automoviles.AutomovilesFragment"
         android:label="Automoviles"
         tools:layout="@layout/fragment_autos" />
+    <fragment
+        android:id="@+id/vista_autos"
+        android:name="com.example.cars_motors.ui.Automoviles.AutomovilesVistaFragment"
+        android:label="VistaAutomoviles"
+        tools:layout="@layout/vista_automoviles" />
+    <fragment
+        android:id="@+id/formulario_usuarios"
+        android:name="com.example.cars_motors.ui.Usuarios.UsuariosFragmentFormulario"
+        android:label="Formulariousuarios"
+        tools:layout="@layout/formulario_usuarios" />
 </navigation>
