@@ -80,7 +80,7 @@ class Login : AppCompatActivity() {
                 email = "",
                 user = username,
                 password = password,
-                tipo = "CLIENTE"
+                tipo = "Cliente"
             )
 
             val idUsuario = usuariosController.insertUsuario(usuarioNuevo).toInt()

@@ -1,23 +1,22 @@
-package com.example.cars_motors.ui.home
+package com.example.cars_motors.ui.Marcas
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cars_motors.controladores.AutomovilController
-import com.example.cars_motors.databinding.FragmentHomeBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cars_motors.modelos.Automovil
+import com.example.cars_motors.controladores.MarcasController
+import com.example.cars_motors.databinding.FragmentMarcasBinding
 
-class HomeFragment : Fragment() {
+class MarcasFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentMarcasBinding? = null
+    private lateinit var homeViewModel: MarcasViewModel
     private lateinit var recyclerView: RecyclerView
-    private lateinit var grupoAdapter: AutosAdapter
+    private lateinit var grupoAdapter: MarcasAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,16 +28,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this).get(MarcasViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentMarcasBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val automvilController = AutomovilController(requireContext())
-        val listaAutos = automvilController.getAllAutomoviles()
+        val marcasController = MarcasController(requireContext())
+        val listaAutos = marcasController.getAllMarcas()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = AutosAdapter(requireContext(), listaAutos)
+        grupoAdapter = MarcasAdapter(requireContext(), listaAutos)
         recyclerView.adapter = grupoAdapter
 
         return root

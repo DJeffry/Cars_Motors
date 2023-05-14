@@ -38,10 +38,10 @@ class TiposAutomovilController(context: Context) {
     @SuppressLint("Range")
     fun getAllTiposAutomovil(): List<TipoAutomovil> {
         val tiposAutomovil = ArrayList<TipoAutomovil>()
-        val cursor = db.rawQuery("SELECT * FROM tipos_automovil", null)
+        val cursor = db.rawQuery("SELECT * FROM tipo_automovil", null)
         while (cursor.moveToNext()) {
             val tipoAutomovil = TipoAutomovil(
-                cursor.getInt(cursor.getColumnIndex("idtipo_automovil")),
+                cursor.getInt(cursor.getColumnIndex("idtipo")),
                 cursor.getString(cursor.getColumnIndex("descripcion"))
             )
             tiposAutomovil.add(tipoAutomovil)

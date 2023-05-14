@@ -36,11 +36,14 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_favoritos, R.id.nav_usuarios,R.id.nav_autos, R.id.nav_colores, R.id.nav_marcas,R.id.nav_tipos
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -52,11 +55,22 @@ class MainActivity : AppCompatActivity() {
         val usernameTextView = headerView.findViewById<TextView>(R.id.nav_header_title)
         val userTypeTextView = headerView.findViewById<TextView>(R.id.nav_header_subtitle)
 
-        val usuariosController = UsuariosController(applicationContext)
-
         usernameTextView.text = UsuariosController.SessionManager.getCurrentUser()?.user.toString()
         userTypeTextView.text = UsuariosController.SessionManager.getCurrentUser()?.tipo.toString()
 
+        if (UsuariosController.SessionManager.getCurrentUser()?.tipo.toString() == "Cliente") {
+            navView.menu.findItem(R.id.nav_usuarios)?.isVisible = false
+            navView.menu.findItem(R.id.nav_colores)?.isVisible = false
+            navView.menu.findItem(R.id.nav_marcas)?.isVisible = false
+            navView.menu.findItem(R.id.nav_tipos)?.isVisible = false
+            navView.menu.findItem(R.id.nav_autos)?.isVisible = false
+        }else{
+            navView.menu.findItem(R.id.nav_usuarios)?.isVisible = true
+            navView.menu.findItem(R.id.nav_colores)?.isVisible = true
+            navView.menu.findItem(R.id.nav_marcas)?.isVisible = true
+            navView.menu.findItem(R.id.nav_tipos)?.isVisible = true
+            navView.menu.findItem(R.id.nav_autos)?.isVisible = true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -1,23 +1,21 @@
-package com.example.cars_motors.ui.home
+package com.example.cars_motors.ui.Colores
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cars_motors.controladores.AutomovilController
-import com.example.cars_motors.databinding.FragmentHomeBinding
+import com.example.cars_motors.controladores.ColoresController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cars_motors.modelos.Automovil
+import com.example.cars_motors.databinding.FragmentColoresBinding
 
-class HomeFragment : Fragment() {
+class ColoresFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentColoresBinding? = null
     private lateinit var recyclerView: RecyclerView
-    private lateinit var grupoAdapter: AutosAdapter
+    private lateinit var grupoAdapter: ColoresAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,16 +27,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this).get(ColoresViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentColoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val automvilController = AutomovilController(requireContext())
-        val listaAutos = automvilController.getAllAutomoviles()
+        val colorController = ColoresController(requireContext())
+        val listaAutos = colorController.getAllColores()
 
         recyclerView = binding.recyclerViewGroupList
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        grupoAdapter = AutosAdapter(requireContext(), listaAutos)
+        grupoAdapter = ColoresAdapter(requireContext(), listaAutos)
         recyclerView.adapter = grupoAdapter
 
         return root

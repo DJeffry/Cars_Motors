@@ -8,7 +8,7 @@ data class Automovil(
     var numeroMotor: String = "",
     var numeroAsientos: Int = 0,
     var anio: Int = 0,
-    var capacidadAsientos: Double = 0.0,
+    var capacidadAsientos: Int = 0,
     var precio: Double = 0.0,
     var uriImg: String = "",
     var descripcion: String = "",

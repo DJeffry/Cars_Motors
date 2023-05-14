@@ -3,16 +3,15 @@ package com.example.cars_motors.controladores
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.example.cars_motors.CarsMotorsDB
-import com.example.cars_motors.modelos.Color
+import com.example.cars_motors.modelos.ColorModel
 
 class ColoresController(context: Context) {
 
     private val db: SQLiteDatabase = CarsMotorsDB(context).writableDatabase
 
-    fun insertColor(color: Color): Long {
+    fun insertColor(color: ColorModel): Long {
         val values = ContentValues().apply {
             put("nombre", color.nombre)
         }
@@ -20,13 +19,13 @@ class ColoresController(context: Context) {
     }
 
     @SuppressLint("Range")
-    fun getColorById(id: Int): Color? {
+    fun getColorById(id: Int): ColorModel? {
         val cursor = db.query(
             "colores", arrayOf("idcolor", "nombre"), "idcolor = ?",
             arrayOf(id.toString()), null, null, null
         )
         return if (cursor.moveToFirst()) {
-            Color(
+            ColorModel(
                 cursor.getInt(cursor.getColumnIndex("idcolor")),
                 cursor.getString(cursor.getColumnIndex("nombre"))
             )
@@ -36,13 +35,13 @@ class ColoresController(context: Context) {
     }
 
     @SuppressLint("Range")
-    fun getAllColores(): List<Color> {
-        val colores = ArrayList<Color>()
+    fun getAllColores(): List<ColorModel> {
+        val colores = ArrayList<ColorModel>()
         val cursor = db.rawQuery("SELECT * FROM colores", null)
         while (cursor.moveToNext()) {
-            val color = Color(
+            val color = ColorModel(
                 cursor.getInt(cursor.getColumnIndex("idcolor")),
-                cursor.getString(cursor.getColumnIndex("nombre"))
+                cursor.getString(cursor.getColumnIndex("descripcion"))
             )
             colores.add(color)
         }
@@ -50,7 +49,7 @@ class ColoresController(context: Context) {
         return colores
     }
 
-    fun updateColor(color: Color): Int {
+    fun updateColor(color: ColorModel): Int {
         val values = ContentValues().apply {
             put("nombre", color.nombre)
         }

@@ -62,7 +62,7 @@ class AutomovilController(context: Context) {
                 cursor.getString(cursor.getColumnIndex("numeroMotor")),
                 cursor.getInt(cursor.getColumnIndex("numeroAsientos")),
                 cursor.getInt(cursor.getColumnIndex("anio")),
-                cursor.getDouble(cursor.getColumnIndex("capacidadAsientos")),
+                cursor.getInt(cursor.getColumnIndex("capacidadAsientos")),
                 cursor.getDouble(cursor.getColumnIndex("precio")),
                 cursor.getString(cursor.getColumnIndex("URIImg")),
                 cursor.getString(cursor.getColumnIndex("descripcion")),
@@ -78,19 +78,19 @@ class AutomovilController(context: Context) {
     @SuppressLint("Range")
     fun getAllAutomoviles(): List<Automovil> {
         val automoviles = ArrayList<Automovil>()
-        val cursor = db.rawQuery("SELECT * FROM Automovil", null)
+        val cursor = db.rawQuery("SELECT * FROM automovil", null)
         while (cursor.moveToNext()) {
             val automovil = Automovil(
                 cursor.getInt(cursor.getColumnIndex("idautomovil")),
                 cursor.getString(cursor.getColumnIndex("modelo")),
-                cursor.getString(cursor.getColumnIndex("numeroVin")),
-                cursor.getString(cursor.getColumnIndex("numeroChasis")),
-                cursor.getString(cursor.getColumnIndex("numeroMotor")),
-                cursor.getInt(cursor.getColumnIndex("numeroAsientos")),
+                cursor.getString(cursor.getColumnIndex("numero_vin")),
+                cursor.getString(cursor.getColumnIndex("numero_chasis")),
+                cursor.getString(cursor.getColumnIndex("numero_motor")),
+                cursor.getInt(cursor.getColumnIndex("numero_asientos")),
                 cursor.getInt(cursor.getColumnIndex("anio")),
-                cursor.getDouble(cursor.getColumnIndex("capacidadAsientos")),
+                cursor.getInt(cursor.getColumnIndex("capacidad_asientos")),
                 cursor.getDouble(cursor.getColumnIndex("precio")),
-                cursor.getString(cursor.getColumnIndex("URIImg")),
+                cursor.getString(cursor.getColumnIndex("URI_IMG")),
                 cursor.getString(cursor.getColumnIndex("descripcion")),
                 cursor.getInt(cursor.getColumnIndex("idmarca")),
                 cursor.getInt(cursor.getColumnIndex("idtipoautomovil")),
