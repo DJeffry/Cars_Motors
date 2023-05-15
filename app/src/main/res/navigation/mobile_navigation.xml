@@ -24,23 +24,74 @@
         tools:layout="@layout/fragment_usuarios" />
 
     <fragment
+        android:id="@+id/vista_usuarios"
+        android:name="com.example.cars_motors.ui.Usuarios.UsuariosFragmentVista"
+        android:label="VistaUsuarios"
+        tools:layout="@layout/vista_usuarios" />
+
+    <fragment
         android:id="@+id/nav_colores"
         android:name="com.example.cars_motors.ui.Colores.ColoresFragment"
         android:label="Colores"
         tools:layout="@layout/fragment_colores" />
+    <fragment
+        android:id="@+id/vista_colores"
+        android:name="com.example.cars_motors.ui.Colores.ColoresFragmentVista"
+        android:label="Colores"
+        tools:layout="@layout/vista_colores" />
     <fragment
         android:id="@+id/nav_marcas"
         android:name="com.example.cars_motors.ui.Marcas.MarcasFragment"
         android:label="Marcas"
         tools:layout="@layout/fragment_marcas" />
     <fragment
+        android:id="@+id/vista_marcas"
+        android:name="com.example.cars_motors.ui.Marcas.MarcasFragmentVista"
+        android:label="Marcas"
+        tools:layout="@layout/vista_marcas" />
+    <fragment
         android:id="@+id/nav_tipos"
         android:name="com.example.cars_motors.ui.Tipos.TiposFragment"
         android:label="Tipos"
         tools:layout="@layout/fragment_tipos" />
     <fragment
+        android:id="@+id/vista_tipos"
+        android:name="com.example.cars_motors.ui.Tipos.TiposFragmentVista"
+        android:label="Tipos"
+        tools:layout="@layout/vista_tipos" />
+    <fragment
         android:id="@+id/nav_autos"
         android:name="com.example.cars_motors.ui.Automoviles.AutomovilesFragment"
         android:label="Automoviles"
         tools:layout="@layout/fragment_autos" />
+    <fragment
+        android:id="@+id/vista_autos"
+        android:name="com.example.cars_motors.ui.Automoviles.AutomovilesFragmentVista"
+        android:label="VistaAutomoviles"
+        tools:layout="@layout/vista_automoviles" />
+    <fragment
+        android:id="@+id/formulario_usuarios"
+        android:name="com.example.cars_motors.ui.Usuarios.UsuariosFragmentFormulario"
+        android:label="Formulariousuarios"
+        tools:layout="@layout/formulario_usuarios" />
+    <fragment
+        android:id="@+id/formulario_colores"
+        android:name="com.example.cars_motors.ui.Colores.ColoresFragmentFormulario"
+        android:label="FormularioColores"
+        tools:layout="@layout/formulario_colores" />
+    <fragment
+        android:id="@+id/formulario_marcas"
+        android:name="com.example.cars_motors.ui.Marcas.MarcasFragmentFormulario"
+        android:label="FormularioMarcas"
+        tools:layout="@layout/formulario_marcas" />
+    <fragment
+        android:id="@+id/formulario_tipos"
+        android:name="com.example.cars_motors.ui.Tipos.TiposFragmentFormulario"
+        android:label="FormularioTipos"
+        tools:layout="@layout/formulario_tipos" />
+    <fragment
+        android:id="@+id/formulario_autos"
+        android:name="com.example.cars_motors.ui.Automoviles.AutomovilesFragmentFormulario"
+        android:label="FormularioAutomoviles"
+        tools:layout="@layout/formulario_automoviles" />
 </navigation>

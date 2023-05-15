@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/lblModelo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Modelo" />
+
+            <EditText
+                android:id="@+id/txtModeloAutomovil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/lblNumeroVin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numero Vin" />
+
+            <EditText
+                android:id="@+id/txtNumeroVin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/lblChasis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chasis" />
+
+            <EditText
+                android:id="@+id/txtChasis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/lblNumeroMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numero de Motor" />
+
+            <EditText
+                android:id="@+id/txtNumeroMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/lblNumeroAsientos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numero de Asientos" />
+
+            <EditText
+                android:id="@+id/txtNumeroAsientos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/lblCapacidadAsientos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capacidad asientos" />
+
+            <EditText
+                android:id="@+id/txtCapacidadAsientos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/lblAnio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Año" />
+
+            <EditText
+                android:id="@+id/txtAnioVehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/lblPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Precio" />
+
+            <EditText
+                android:id="@+id/txtPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/lblDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                android:text="Descripción" />
+
+            <EditText
+                android:id="@+id/txtDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/lblMarca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marca" />
+
+            <Spinner
+                android:id="@+id/toolMarca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <TextView
+                android:id="@+id/lblTipoAuto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo Auto" />
+
+            <Spinner
+                android:id="@+id/toolTipoAuto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <TextView
+                android:id="@+id/lblColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Color" />
+
+            <Spinner
+                android:id="@+id/toolColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

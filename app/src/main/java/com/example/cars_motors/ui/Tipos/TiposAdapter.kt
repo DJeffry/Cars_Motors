@@ -1,4 +1,4 @@
-package com.example.cars_motors.ui.Tipos
+package com.example.cars_motors.ui.Tipo
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,56 +12,83 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.R
 import com.example.cars_motors.controladores.TiposAutomovilController
-import com.example.cars_motors.modelos.TipoAutomovil
 import com.example.cars_motors.databinding.ItemlistTiposCrudBinding
+import com.example.cars_motors.modelos.TipoAutomovil
+import com.example.cars_motors.modelos.Usuario
 
-class TiposAdapter(private val mContext: Context, private val listaGrupos: MutableList<TipoAutomovil>, private val tiposAutomovilController: TiposAutomovilController ) : RecyclerView.Adapter<TiposAdapter.ViewHolder>() {
+class TiposAdapter(private val mContext: Context, private val listaTipo: MutableList<TipoAutomovil>, private val TipoController: TiposAutomovilController) : RecyclerView.Adapter<TiposAdapter.ViewHolder>() {
+
     fun eliminarItem(position: Int) {
-        val automovil = listaGrupos[position]
-        val deletedRows = tiposAutomovilController.deleteTipoAutomovilbyid(automovil.id)
+        val tipo = listaTipo[position]
+        val deletedRows = TipoController.deleteTipoAutomovilbyid(tipo.id)
         if (deletedRows > 0) {
-            listaGrupos.removeAt(position)
+            listaTipo.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, listaGrupos.size - position)
+            notifyItemRangeChanged(position, listaTipo.size - position)
         }
     }
+
+    fun getTipoByPosition(position: Int): TipoAutomovil? {
+        if (position < listaTipo.size) {
+            return listaTipo[position]
+        }
+        return null
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemlistTiposCrudBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val grupo = listaGrupos[position]
-        holder.itemView.findViewById<TextView>(R.id.Nombre).text = grupo.descripcion
-        holder.itemView.findViewById<TextView>(R.id.id).text = grupo.id.toString()
+        val tipo = listaTipo[position]
 
-        holder.itemView.findViewById<Button>(R.id.btnModificar).setOnClickListener {
-            // TODO: implementar acción para el botón "ver"
+        holder.binding.lblMarka.text = tipo.descripcion.toString()
+        holder.binding.lblModel.text = tipo.id.toString()
+
+        holder.binding.btnModificar.setOnClickListener {
+            val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
+            val bundle = bundleOf("idTipo" to tipo.id)
+            navController.navigate(R.id.formulario_tipos, bundle)
         }
 
-        holder.itemView.findViewById<Button>(R.id.btnEliminar).setOnClickListener {
+        holder.binding.btnEliminar.setOnClickListener {
             eliminarItem(position)
+        }
+
+        holder.itemView.setOnClickListener {
+            val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
+            val idposition = getTipoByPosition(position)?.id
+            val bundle = bundleOf("idTipo" to idposition)
+            navController.navigate(R.id.vista_tipos, bundle)
         }
     }
 
     override fun getItemCount(): Int {
-        return listaGrupos.size
+        return listaTipo.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemlistTiposCrudBinding.bind(itemView)
-        val tiposController = TiposAutomovilController(itemView.context)
+        val binding = ItemlistTiposCrudBinding.bind(itemView)
 
-        fun bind(grupo: TipoAutomovil, position: Int) {
-            binding.Nombre.text = grupo.descripcion
-            binding.id.text = grupo.id.toString()
+        fun bind(tipo: TipoAutomovil, position: Int) {
+            binding.lblMarka.text = tipo.descripcion.toString()
+            binding.lblModel.text = tipo.id.toString()
 
-            // Set click listener on the item view
+
+
+
+            binding.btnEliminar.setOnClickListener {
+                eliminarItem(position)
+            }
+
             itemView.setOnClickListener {
                 val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
-                val bundle = bundleOf("listaGrupos" to listaGrupos.toTypedArray())
-                navController.navigate(R.id.nav_favoritos, bundle)
+                val bundle = bundleOf("idTipo" to tipo.id)
+                navController.navigate(R.id.vista_tipos, bundle)
             }
+
         }
     }
 }

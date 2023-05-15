@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.R
 import com.example.cars_motors.controladores.AutomovilController
@@ -35,7 +32,7 @@ class FavoritosAdapter(private val mContext: Context, private val listaGrupos: M
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val grupo = listaGrupos[position]
-        holder.itemView.findViewById<TextView>(R.id.id).text = grupo.id.toString()
+        holder.itemView.findViewById<TextView>(R.id.lblModel).text = grupo.id.toString()
 
         holder.itemView.findViewById<Button>(R.id.btnModificar).setOnClickListener {
             // TODO: implementar acción para el botón "ver"
@@ -56,17 +53,9 @@ class FavoritosAdapter(private val mContext: Context, private val listaGrupos: M
         val MarcaController = MarcasController(itemView.context)
 
         fun bind(grupo: FavoritoAutomovil, position: Int) {
-            binding.Nombre.text = MarcaController.getMarcaById(favoritosController.getAutomovilById(grupo.idAutomovil)!!.idMarca )?.nombre.toString()
-            binding.id.text = favoritosController.getAutomovilById(grupo.idAutomovil)!!.modelo
-            binding.edad.text = favoritosController.getAutomovilById(grupo.idAutomovil)!!.anio.toString()
-
-            // Set click listener on the item view
-            itemView.setOnClickListener {
-                val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
-                val bundle = bundleOf("listaGrupos" to listaGrupos.toTypedArray())
-                navController.navigate(R.id.nav_favoritos, bundle)
-            }
-
+            binding.lblMarca.text = MarcaController.getMarcaById(favoritosController.getAutomovilById(grupo.idAutomovil)!!.idMarca )?.nombre.toString()
+            binding.lblModel.text = favoritosController.getAutomovilById(grupo.idAutomovil)!!.modelo
+            binding.lblAnyo.text = favoritosController.getAutomovilById(grupo.idAutomovil)!!.anio.toString()
         }
     }
 }

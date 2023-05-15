@@ -1,20 +1,10 @@
 package com.example.cars_motors.ui.home
 
 import android.content.Context
-import android.graphics.Color
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cars_motors.R
-import com.example.cars_motors.controladores.AutomovilController
 import com.example.cars_motors.controladores.MarcasController
 import com.example.cars_motors.modelos.Automovil
 import com.example.cars_motors.databinding.ItemlistAutosBinding
@@ -40,8 +30,8 @@ class AutosAdapter(private val mContext: Context, private val listaGrupos: List<
         val marcaController = MarcasController(itemView.context)
 
         fun bind(grupo: Automovil, position: Int) {
-            binding.Nombre.text = marcaController.getMarcaById(grupo.idMarca)?.nombre
-            binding.id.text = grupo.modelo
+            binding.lblMarka.text = marcaController.getMarcaById(grupo.idMarca)?.nombre
+            binding.lblModel.text = grupo.modelo
             binding.anio.text = grupo.anio.toString()
 
             // Set click listener on the item view

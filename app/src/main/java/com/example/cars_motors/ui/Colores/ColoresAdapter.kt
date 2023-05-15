@@ -1,6 +1,7 @@
-package com.example.cars_motors.ui.Colores
+package com.example.cars_motors.ui.ColorModel
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,58 +12,82 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.R
-import com.example.cars_motors.controladores.AutomovilController
 import com.example.cars_motors.controladores.ColoresController
-import com.example.cars_motors.modelos.ColorModel
 import com.example.cars_motors.databinding.ItemlistColoresCrudBinding
+import com.example.cars_motors.modelos.ColorModel
+import com.example.cars_motors.modelos.Usuario
 
-class ColoresAdapter(private val mContext: Context, private val listaGrupos: MutableList<ColorModel>,private val coloresController: ColoresController ) : RecyclerView.Adapter<ColoresAdapter.ViewHolder>() {
+class ColoresAdapter(private val mContext: Context, private val listaColor: MutableList<ColorModel>, private val ColorController: ColoresController) : RecyclerView.Adapter<ColoresAdapter.ViewHolder>() {
 
     fun eliminarItem(position: Int) {
-        val automovil = listaGrupos[position]
-        val deletedRows = coloresController.deleteColorbyid(automovil.id)
+        val color = listaColor[position]
+        val deletedRows = ColorController.deleteColorbyid(color.id)
         if (deletedRows > 0) {
-            listaGrupos.removeAt(position)
+            listaColor.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, listaGrupos.size - position)
+            notifyItemRangeChanged(position, listaColor.size - position)
         }
     }
+
+    fun getColorByPosition(position: Int): ColorModel? {
+        if (position < listaColor.size) {
+            return listaColor[position]
+        }
+        return null
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemlistColoresCrudBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val grupo = listaGrupos[position]
-        holder.itemView.findViewById<TextView>(R.id.Nombre).text = grupo.nombre
-        holder.itemView.findViewById<TextView>(R.id.id).text = grupo.id.toString()
+        val color = listaColor[position]
 
-        holder.itemView.findViewById<Button>(R.id.btnModificar).setOnClickListener {
-            // TODO: implementar acción para el botón "ver"
+        holder.binding.lblMarka.text = color.nombre.toString()
+        holder.binding.lblModel.text = color.id.toString()
+
+        holder.binding.btnModificar.setOnClickListener {
+            val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
+            val bundle = bundleOf("idColor" to color.id)
+            navController.navigate(R.id.formulario_colores, bundle)
         }
 
-        holder.itemView.findViewById<Button>(R.id.btnEliminar).setOnClickListener {
+        holder.binding.btnEliminar.setOnClickListener {
             eliminarItem(position)
+        }
+
+        holder.itemView.setOnClickListener {
+            val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
+            val idposition = getColorByPosition(position)?.id
+            val bundle = bundleOf("idColor" to idposition)
+            navController.navigate(R.id.vista_colores, bundle)
         }
     }
 
     override fun getItemCount(): Int {
-        return listaGrupos.size
+        return listaColor.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemlistColoresCrudBinding.bind(itemView)
-        val coloresController = ColoresController(itemView.context)
+        val binding = ItemlistColoresCrudBinding.bind(itemView)
 
-        fun bind(grupo: ColorModel, position: Int) {
-            binding.Nombre.text = grupo.nombre
-            binding.id.text = grupo.id.toString()
+        fun bind(color: ColorModel, position: Int) {
+            binding.lblMarka.text = color.nombre.toString()
+            binding.lblModel.text = color.id.toString()
 
-            // Set click listener on the item view
+
+
+
+            binding.btnEliminar.setOnClickListener {
+                eliminarItem(position)
+            }
+
             itemView.setOnClickListener {
                 val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
-                val bundle = bundleOf("listaGrupos" to listaGrupos.toTypedArray())
-                navController.navigate(R.id.nav_favoritos, bundle)
+                val bundle = bundleOf("idColor" to color.id)
+                navController.navigate(R.id.vista_colores, bundle)
             }
 
         }

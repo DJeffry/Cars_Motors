@@ -22,7 +22,7 @@ class AutomovilController(context: Context) {
             put("anio", automovil.anio)
             put("capacidadAsientos", automovil.capacidadAsientos)
             put("precio", automovil.precio)
-            put("URIIMG", automovil.uriImg)
+            put("URI_IMG", automovil.uriImg)
             put("descripcion", automovil.descripcion)
             put("idmarca", automovil.idMarca)
             put("idtipoautomovil", automovil.idTipoAutomovil)
@@ -37,14 +37,14 @@ class AutomovilController(context: Context) {
             "automovil", arrayOf(
                 "idautomovil",
                 "modelo",
-                "numeroVin",
-                "numeroChasis",
-                "numeroMotor",
-                "numeroAsientos",
+                "numero_vin",
+                "numero_chasis",
+                "numero_motor",
+                "numero_asientos",
                 "anio",
-                "capacidadAsientos",
+                "capacidad_asientos",
                 "precio",
-                "URIIMG",
+                "URI_IMG",
                 "descripcion",
                 "idmarca",
                 "idtipoautomovil",
@@ -57,14 +57,14 @@ class AutomovilController(context: Context) {
             Automovil(
                 cursor.getInt(cursor.getColumnIndex("idautomovil")),
                 cursor.getString(cursor.getColumnIndex("modelo")),
-                cursor.getString(cursor.getColumnIndex("numeroVin")),
-                cursor.getString(cursor.getColumnIndex("numeroChasis")),
-                cursor.getString(cursor.getColumnIndex("numeroMotor")),
-                cursor.getInt(cursor.getColumnIndex("numeroAsientos")),
+                cursor.getString(cursor.getColumnIndex("numero_vin")),
+                cursor.getString(cursor.getColumnIndex("numero_chasis")),
+                cursor.getString(cursor.getColumnIndex("numero_motor")),
+                cursor.getInt(cursor.getColumnIndex("numero_asientos")),
                 cursor.getInt(cursor.getColumnIndex("anio")),
-                cursor.getInt(cursor.getColumnIndex("capacidadAsientos")),
+                cursor.getInt(cursor.getColumnIndex("capacidad_asientos")),
                 cursor.getDouble(cursor.getColumnIndex("precio")),
-                cursor.getString(cursor.getColumnIndex("URIImg")),
+                cursor.getString(cursor.getColumnIndex("URI_IMG")),
                 cursor.getString(cursor.getColumnIndex("descripcion")),
                 cursor.getInt(cursor.getColumnIndex("idmarca")),
                 cursor.getInt(cursor.getColumnIndex("idtipoautomovil")),
@@ -105,14 +105,14 @@ class AutomovilController(context: Context) {
     fun updateAutomovil(automovil: Automovil): Int {
         val values = ContentValues().apply {
             put("modelo", automovil.modelo)
-            put("numeroVin", automovil.numeroVin)
-            put("numeroChasis", automovil.numeroChasis)
-            put("numeroMotor", automovil.numeroMotor)
-            put("numeroAsientos", automovil.numeroAsientos)
+            put("numero_vin", automovil.numeroVin)
+            put("numero_chasis", automovil.numeroChasis)
+            put("numero_motor", automovil.numeroMotor)
+            put("numero_asientos", automovil.numeroAsientos)
             put("anio", automovil.anio)
-            put("capacidadAsientos", automovil.capacidadAsientos)
+            put("capacidad_asientos", automovil.capacidadAsientos)
             put("precio", automovil.precio)
-            put("URIIMG", automovil.uriImg)
+            put("URI_IMG", automovil.uriImg)
             put("descripcion", automovil.descripcion)
             put("idmarca", automovil.idMarca)
             put("idtipoautomovil", automovil.idTipoAutomovil)
