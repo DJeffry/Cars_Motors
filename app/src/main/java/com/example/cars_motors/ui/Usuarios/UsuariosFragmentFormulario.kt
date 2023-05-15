@@ -33,7 +33,7 @@ class UsuariosFragmentFormulario : Fragment() {
 
 
         if (usuario != null) {
-            binding.txtUsuario.setText(usuario.nombre)
+            binding.txtNombre.setText(usuario.nombre)
             binding.txtApellidosUsuarios.setText(usuario.apellido)
             binding.txtEmailUsuarios.setText(usuario.email)
             binding.txtUsuario.setText(usuario.user)
@@ -47,7 +47,7 @@ class UsuariosFragmentFormulario : Fragment() {
         }
 
         binding.btnGuardar.setOnClickListener {
-            val txtnombres = binding.txtUsuario.text.toString()
+            val txtnombres = binding.txtNombre.text.toString()
             val txtapellidos = binding.txtApellidosUsuarios.text.toString()
             val txtemail = binding.txtEmailUsuarios.text.toString()
             val txtusuario = binding.txtUsuario.text.toString()
