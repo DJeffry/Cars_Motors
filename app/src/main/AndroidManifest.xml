@@ -12,10 +12,15 @@
         android:theme="@style/Theme.Cars_Motors"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Login.Register"
+            android:exported="true"
+            android:label=""
+            android:theme="@style/Theme.Cars_Motors" />
+        <activity
             android:name=".ui.Login.Login"
+            android:exported="true"
             android:label="CarsMotors"
-            android:theme="@style/Theme.Cars_Motors.NoActionBar"
-            android:exported="true">
+            android:theme="@style/Theme.Cars_Motors.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +35,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Cars_Motors.NoActionBar"/>
+            android:theme="@style/Theme.Cars_Motors.NoActionBar" />
     </application>
 
 </manifest>
