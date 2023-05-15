@@ -13,21 +13,21 @@ class ColoresController(context: Context) {
 
     fun insertColor(color: ColorModel): Long {
         val values = ContentValues().apply {
-            put("nombre", color.nombre)
+            put("descripcion", color.nombre)
         }
         return db.insert("colores", null, values)
     }
 
     @SuppressLint("Range")
-    fun getColorById(id: Int): ColorModel? {
+    fun getColorById(id: Int?): ColorModel? {
         val cursor = db.query(
-            "colores", arrayOf("idcolor", "nombre"), "idcolor = ?",
+            "colores", arrayOf("idcolor", "descripcion"), "idcolor = ?",
             arrayOf(id.toString()), null, null, null
         )
         return if (cursor.moveToFirst()) {
             ColorModel(
                 cursor.getInt(cursor.getColumnIndex("idcolor")),
-                cursor.getString(cursor.getColumnIndex("nombre"))
+                cursor.getString(cursor.getColumnIndex("descripcion"))
             )
         } else {
             null
@@ -51,7 +51,7 @@ class ColoresController(context: Context) {
 
     fun updateColor(color: ColorModel): Int {
         val values = ContentValues().apply {
-            put("nombre", color.nombre)
+            put("descripcion", color.nombre)
         }
         return db.update(
             "colores", values, "idcolor = ?",

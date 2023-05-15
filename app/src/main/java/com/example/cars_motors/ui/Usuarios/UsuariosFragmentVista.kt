@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.cars_motors.controladores.UsuariosController
 import com.example.cars_motors.databinding.VistaUsuariosBinding
 
-class UsuariosVistaFragment : Fragment() {
+class UsuariosFragmentVista : Fragment() {
     private var _binding: VistaUsuariosBinding? = null
     private val binding get() = _binding!!
 

@@ -20,7 +20,7 @@
             app:srcCompat="?android:attr/fingerprintAuthDrawable" />
 
         <TextView
-            android:id="@+id/Nombre"
+            android:id="@+id/lblMarka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Marca"
@@ -29,7 +29,7 @@
             android:translationX="130dp" />
 
         <TextView
-            android:id="@+id/id"
+            android:id="@+id/lblModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="id"

@@ -20,7 +20,7 @@
             app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
         <TextView
-            android:id="@+id/Nombre"
+            android:id="@+id/lblNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre"
@@ -29,7 +29,7 @@
             android:translationX="130dp" />
 
         <TextView
-            android:id="@+id/id"
+            android:id="@+id/lblApellidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Apellido"

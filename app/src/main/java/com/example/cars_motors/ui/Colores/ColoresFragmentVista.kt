@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.cars_motors.controladores.ColoresController
 import com.example.cars_motors.databinding.VistaColoresBinding
 
-class ColoresVistaFragment : Fragment() {
+class ColoresFragmentVista : Fragment() {
     private var _binding: VistaColoresBinding? = null
     private val binding get() = _binding!!
 
@@ -22,19 +22,14 @@ class ColoresVistaFragment : Fragment() {
         val root: View = binding.root
 
         val ColoresController = ColoresController(requireContext())
-        val idUsuario = arguments?.getInt("idUsuario") ?: 0
-        Log.d("ColoresVistaFragment", "ID del usuario: $idUsuario")
-        val usuario = ColoresController.getUsuarioById(idUsuario)
+        val idColor = arguments?.getInt("idColor") ?: 0
+        val color= ColoresController.getColorById(idColor)
 
 
-        if (usuario != null) {
-            binding.lblNombre.text = usuario.nombre
-            val nombre=usuario.nombre
-            Log.d("ColoresVistaFragment", "ID del usuario: $nombre")
-            binding.lblApellidos.text = usuario.apellido
-            binding.lblEmail.text = usuario.email
-            binding.lblUser.text = usuario.user
-            binding.lblTipo.text = usuario.tipo
+        if (color != null) {
+            binding.lblNombre.text = color.nombre
+            val nombre=color.nombre
+            binding.lblNombre.text = color.nombre.toString()
         }
 
         return root
