@@ -1,8 +1,8 @@
 package com.example.cars_motors
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.cars_motors.controladores.UsuariosController
 import com.example.cars_motors.databinding.ActivityMainBinding
+import com.example.cars_motors.ui.Login.Login
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
@@ -79,6 +80,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val menuItem = menu.findItem(R.id.action_logout)
+        menuItem.setOnMenuItemClickListener {
+            UsuariosController.SessionManager.setCurrentUser(null)
+            val intent = Intent(this, Login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+            true
+        }
+
         return true
     }
 
