@@ -1,5 +1,6 @@
 package com.example.cars_motors.ui.Colores
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.navigation.findNavController
 import com.example.cars_motors.R
 import com.example.cars_motors.controladores.ColoresController
 import com.example.cars_motors.databinding.FormularioColoresBinding
+import com.example.cars_motors.modelos.ColorModel
 import com.example.cars_motors.modelos.Usuario
 
 class ColoresFragmentFormulario : Fragment() {
@@ -26,63 +28,31 @@ class ColoresFragmentFormulario : Fragment() {
         val root: View = binding.root
 
         val ColoresController = ColoresController(requireContext())
-        val idUsuario = arguments?.getInt("idUsuario") ?: 0
-        Log.d("ColoresVistaFragment", "ID del usuario: $idUsuario")
-        val usuario = ColoresController.getUsuarioById(idUsuario)
+        val idColor = arguments?.getInt("idColor") ?: 0
+        val color=ColoresController.getColorById(idColor)
 
-
-        if (usuario != null) {
-            binding.txtNombresUsuario.setText(usuario.nombre)
-            binding.txtApellidosColores.setText(usuario.apellido)
-            binding.txtEmailColores.setText(usuario.email)
-            binding.txtUsuario.setText(usuario.user)
-            if (usuario.tipo == "cliente") {
-                binding.radCliente.isChecked = true
-                binding.radAdmin.isChecked = false
-            } else {
-                binding.radCliente.isChecked = false
-                binding.radAdmin.isChecked = true
-            }
+        if (color != null) {
+            binding.txtColoresCrud.setText(color.nombre)
         }
 
         binding.btnGuardar.setOnClickListener {
-            val txtnombres = binding.txtNombresUsuario.text.toString()
-            val txtapellidos = binding.txtApellidosColores.text.toString()
-            val txtemail = binding.txtEmailColores.text.toString()
-            val txtusuario = binding.txtUsuario.text.toString()
-            val txtpassword = binding.txtContra.text.toString()
+            val txtColor = binding.txtColoresCrud.text.toString()
 
-            if (txtnombres.isBlank() || txtapellidos.isBlank() || txtemail.isBlank() || txtusuario.isBlank() || txtpassword.isBlank()) {
+            if (txtColor.isBlank()) {
                 // Algunos campos no están completos
                 Toast.makeText(requireContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (txtusuario.length < 6 || txtpassword.length < 8) {
-                // El usuario y la contraseña deben tener al menos 6 y 8 caracteres respectivamente
-                Toast.makeText(requireContext(), "El usuario y la contraseña deben tener al menos 6 y 8 caracteres respectivamente", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            val nuevoColor = ColorModel()
+            nuevoColor.nombre
 
-            val nuevoUsuario = Usuario()
-            nuevoUsuario.nombre = txtnombres
-            nuevoUsuario.apellido = txtapellidos
-            nuevoUsuario.email = txtemail
-            nuevoUsuario.user = txtusuario
-            nuevoUsuario.password = txtpassword
-
-            if (binding.radAdmin.isChecked) {
-                nuevoUsuario.tipo = "Administrador"
+            if (color != null) {
+                ColoresController.updateColor(color)
+                Toast.makeText(requireContext(), "Color Modificado con exito", Toast.LENGTH_SHORT).show()
             } else {
-                nuevoUsuario.tipo = "Cliente"
-            }
-
-            if (usuario != null) {
-                ColoresController.updateUsuario(usuario)
-                Toast.makeText(requireContext(), "Usuario Modificado con exito", Toast.LENGTH_SHORT).show()
-            } else {
-                ColoresController.insertUsuario(nuevoUsuario)
-                Toast.makeText(requireContext(), "Usuario Creado con exito", Toast.LENGTH_SHORT).show()
+                ColoresController.insertColor(nuevoColor)
+                Toast.makeText(requireContext(), "Color Creado con exito", Toast.LENGTH_SHORT).show()
             }
             val navController = requireActivity().findNavController(R.id.nav_host_fragment_content_main)
             navController.popBackStack()

@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.cars_motors.controladores.UsuariosController
-import com.example.cars_motors.databinding.VistaUsuariosBinding
+import com.example.cars_motors.controladores.TiposAutomovilController
+import com.example.cars_motors.databinding.VistaTiposBinding
 
-class UsuariosVistaFragment : Fragment() {
-    private var _binding: VistaUsuariosBinding? = null
+class TiposFragmentVista : Fragment() {
+    private var _binding: VistaTiposBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,23 +18,16 @@ class UsuariosVistaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = VistaUsuariosBinding.inflate(inflater, container, false)
+        _binding = VistaTiposBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val usuariosController = UsuariosController(requireContext())
-        val idUsuario = arguments?.getInt("idUsuario") ?: 0
-        Log.d("UsuariosVistaFragment", "ID del usuario: $idUsuario")
-        val usuario = usuariosController.getUsuarioById(idUsuario)
+        val tipoController = TiposAutomovilController(requireContext())
+        val idTipo = arguments?.getInt("idTipo") ?: 0
+        val tipo = tipoController.getTipoAutomovilById(idTipo)
 
 
-        if (usuario != null) {
-            binding.lblNombre.text = usuario.nombre
-            val nombre=usuario.nombre
-            Log.d("UsuariosVistaFragment", "ID del usuario: $nombre")
-            binding.lblApellidos.text = usuario.apellido
-            binding.lblEmail.text = usuario.email
-            binding.lblUser.text = usuario.user
-            binding.lblTipo.text = usuario.tipo
+        if (tipo != null) {
+            binding.lblNombre.text = tipo.descripcion
         }
 
         return root

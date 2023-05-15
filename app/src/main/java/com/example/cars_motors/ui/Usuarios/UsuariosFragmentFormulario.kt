@@ -33,7 +33,7 @@ class UsuariosFragmentFormulario : Fragment() {
 
 
         if (usuario != null) {
-            binding.txtNombresUsuario.setText(usuario.nombre)
+            binding.txtUsuario.setText(usuario.nombre)
             binding.txtApellidosUsuarios.setText(usuario.apellido)
             binding.txtEmailUsuarios.setText(usuario.email)
             binding.txtUsuario.setText(usuario.user)
@@ -47,7 +47,7 @@ class UsuariosFragmentFormulario : Fragment() {
         }
 
         binding.btnGuardar.setOnClickListener {
-            val txtnombres = binding.txtNombresUsuario.text.toString()
+            val txtnombres = binding.txtUsuario.text.toString()
             val txtapellidos = binding.txtApellidosUsuarios.text.toString()
             val txtemail = binding.txtEmailUsuarios.text.toString()
             val txtusuario = binding.txtUsuario.text.toString()
@@ -59,7 +59,7 @@ class UsuariosFragmentFormulario : Fragment() {
                 return@setOnClickListener
             }
 
-            if (txtusuario.length < 6 || txtpassword.length < 8) {
+            if (txtpassword.length < 8) {
                 // El usuario y la contraseña deben tener al menos 6 y 8 caracteres respectivamente
                 Toast.makeText(requireContext(), "El usuario y la contraseña deben tener al menos 6 y 8 caracteres respectivamente", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
