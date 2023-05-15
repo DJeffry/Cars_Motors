@@ -56,7 +56,12 @@ class TiposAdapter(private val mContext: Context, private val listaGrupos: Mutab
             binding.Nombre.text = grupo.descripcion
             binding.id.text = grupo.id.toString()
 
-
+            // Set click listener on the item view
+            itemView.setOnClickListener {
+                val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
+                val bundle = bundleOf("listaGrupos" to listaGrupos.toTypedArray())
+                navController.navigate(R.id.nav_favoritos, bundle)
+            }
         }
     }
 }

@@ -16,79 +16,54 @@ import com.example.cars_motors.controladores.UsuariosController
 import com.example.cars_motors.databinding.ItemlistUsuariosCrudBinding
 import com.example.cars_motors.modelos.Usuario
 
-class UsuariosAdapter(private val mContext: Context, private val listaUsuarios: MutableList<Usuario>, private val usuariosController: UsuariosController) : RecyclerView.Adapter<UsuariosAdapter.ViewHolder>() {
+class UsuariosAdapter(private val mContext: Context, private val listaGrupos: MutableList<Usuario>,private val usuariosController: UsuariosController) : RecyclerView.Adapter<UsuariosAdapter.ViewHolder>() {
 
     fun eliminarItem(position: Int) {
-        val usuario = listaUsuarios[position]
-        val deletedRows = usuariosController.deleteUsuariobyid(usuario.id)
+        val automovil = listaGrupos[position]
+        val deletedRows = usuariosController.deleteUsuariobyid(automovil.id)
         if (deletedRows > 0) {
-            listaUsuarios.removeAt(position)
+            listaGrupos.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, listaUsuarios.size - position)
+            notifyItemRangeChanged(position, listaGrupos.size - position)
         }
     }
-
-    fun getUsuarioByPosition(position: Int): Usuario? {
-        if (position < listaUsuarios.size) {
-            return listaUsuarios[position]
-        }
-        return null
-    }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemlistUsuariosCrudBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val usuario = listaUsuarios[position]
+        val grupo = listaGrupos[position]
+        holder.itemView.findViewById<TextView>(R.id.Nombre).text = grupo.nombre
+        holder.itemView.findViewById<TextView>(R.id.id).text = grupo.id.toString()
 
-        holder.binding.Nombre.text = usuario.nombre
-        holder.binding.tipo.text = usuario.tipo
-        holder.binding.id.text = usuario.id.toString()
-
-        holder.binding.btnModificar.setOnClickListener {
-            val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
-            val bundle = bundleOf("idUsuario" to usuario.id)
-            navController.navigate(R.id.formulario_usuarios, bundle)
+        holder.itemView.findViewById<Button>(R.id.btnModificar).setOnClickListener {
+            // TODO: implementar acción para el botón "ver"
         }
 
-        holder.binding.btnEliminar.setOnClickListener {
+        holder.itemView.findViewById<Button>(R.id.btnEliminar).setOnClickListener {
             eliminarItem(position)
-        }
-
-        holder.itemView.setOnClickListener {
-            val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
-            val idposition = getUsuarioByPosition(position)?.id
-            val bundle = bundleOf("idUsuario" to idposition)
-            navController.navigate(R.id.vista_usuarios, bundle)
         }
     }
 
     override fun getItemCount(): Int {
-        return listaUsuarios.size
+        return listaGrupos.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = ItemlistUsuariosCrudBinding.bind(itemView)
+        private val binding = ItemlistUsuariosCrudBinding.bind(itemView)
+        val usuariosController = UsuariosController(itemView.context)
 
-        fun bind(usuario: Usuario, position: Int) {
-            binding.Nombre.text = usuario.nombre
-            binding.tipo.text = usuario.tipo
-            binding.id.text = usuario.id.toString()
+        fun bind(grupo: Usuario, position: Int) {
+            binding.Nombre.text = grupo.nombre
+            binding.tipo.text = grupo.tipo
+            binding.id.text = grupo.apellido
 
-
-
-
-            binding.btnEliminar.setOnClickListener {
-                eliminarItem(position)
-            }
-
+            // Set click listener on the item view
             itemView.setOnClickListener {
                 val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
-                val bundle = bundleOf("idUsuario" to usuario.id)
-                navController.navigate(R.id.vista_usuarios, bundle)
+                val bundle = bundleOf("listaGrupos" to listaGrupos.toTypedArray())
+                navController.navigate(R.id.nav_usuarios, bundle)
             }
 
         }

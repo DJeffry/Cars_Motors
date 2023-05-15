@@ -60,6 +60,12 @@ class FavoritosAdapter(private val mContext: Context, private val listaGrupos: M
             binding.id.text = favoritosController.getAutomovilById(grupo.idAutomovil)!!.modelo
             binding.edad.text = favoritosController.getAutomovilById(grupo.idAutomovil)!!.anio.toString()
 
+            // Set click listener on the item view
+            itemView.setOnClickListener {
+                val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
+                val bundle = bundleOf("listaGrupos" to listaGrupos.toTypedArray())
+                navController.navigate(R.id.nav_favoritos, bundle)
+            }
 
         }
     }
