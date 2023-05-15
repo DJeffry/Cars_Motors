@@ -43,7 +43,7 @@ class MarcasFragmentFormulario : Fragment() {
             }
 
             val nuevoMarca = Marca()
-            nuevoMarca.nombre
+            nuevoMarca.nombre = binding.txtMarcasCrud.text.toString()
 
             if (color != null) {
                 MarcasController.updateMarca(color)

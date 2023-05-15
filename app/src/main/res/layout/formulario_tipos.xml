@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.Tipos.TiposFragmentFormulario">
 
+
     <EditText
         android:id="@+id/txtTiposCrud"
         android:layout_width="wrap_content"

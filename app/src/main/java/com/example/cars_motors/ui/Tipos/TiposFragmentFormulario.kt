@@ -35,16 +35,16 @@ class TiposFragmentFormulario : Fragment() {
         }
 
         binding.btnGuardar.setOnClickListener {
-            val txtMarca = binding.txtTiposCrud.text.toString()
+            val txtTipo = binding.txtTiposCrud.text.toString()
 
-            if (txtMarca.isBlank()) {
+            if (txtTipo.isBlank()) {
                 // Algunos campos no están completos
                 Toast.makeText(requireContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val nuevoTipo = TipoAutomovil()
-            nuevoTipo.descripcion = tipo?.descripcion.toString()
+            nuevoTipo.descripcion = txtTipo
 
             if (tipo != null) {
                 TiposController.updateTipoAutomovil(tipo)

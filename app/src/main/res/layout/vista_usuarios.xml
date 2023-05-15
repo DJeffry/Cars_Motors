@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Usuarios.UsuariosVistaFragment">
+    tools:context=".ui.Usuarios.UsuariosFragmentVista">
+
 
     <TextView
         android:id="@+id/lblNombre"

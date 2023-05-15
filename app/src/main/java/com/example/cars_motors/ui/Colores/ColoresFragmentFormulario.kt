@@ -45,7 +45,7 @@ class ColoresFragmentFormulario : Fragment() {
             }
 
             val nuevoColor = ColorModel()
-            nuevoColor.nombre
+            nuevoColor.nombre = txtColor
 
             if (color != null) {
                 ColoresController.updateColor(color)

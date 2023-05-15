@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.Usuarios.UsuariosFragmentFormulario">
 
+
     <TextView
         android:id="@+id/lblContra"
         android:layout_width="wrap_content"
@@ -100,8 +101,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo Usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContra"
-        tools:layout_editor_absoluteX="166dp" />
+        tools:ignore="MissingConstraints" />
 
     <RadioGroup
         android:id="@+id/radioGroup"

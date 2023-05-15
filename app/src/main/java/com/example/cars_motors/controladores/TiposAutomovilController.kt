@@ -54,7 +54,7 @@ class TiposAutomovilController(context: Context) {
             put("descripcion", tipoAutomovil.descripcion)
         }
         return db.update(
-            "tipos_automovil", values, "idtipo = ?",
+            "tipo_automovil", values, "idtipo = ?",
             arrayOf(tipoAutomovil.id.toString())
         )
     }
