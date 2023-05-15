@@ -10,9 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cars_motors.MainActivity
 import com.example.cars_motors.R
 import com.example.cars_motors.controladores.UsuariosController
-import com.example.cars_motors.modelos.Usuario
-import com.example.cars_motors.ui.home.HomeFragment
-import com.example.cars_motors.ui.home.HomeViewModel
+
 
 class Login : AppCompatActivity() {
 
@@ -59,47 +57,8 @@ class Login : AppCompatActivity() {
         }
 
         registerButton.setOnClickListener {
-            val username = usernameEditText.text.toString().trim()
-            val password = passwordEditText.text.toString().trim()
-
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val usuarioExistente = usuariosController.getUsuarioByUser(username)
-
-            if (usuarioExistente != null) {
-                Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val usuarioNuevo = Usuario(
-                nombre = "",
-                apellido = "",
-                email = "",
-                user = username,
-                password = password,
-                tipo = "Cliente"
-            )
-
-            val idUsuario = usuariosController.insertUsuario(usuarioNuevo).toInt()
-
-            if (idUsuario != -1) {
-                Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-
-                // Iniciar sesión automáticamente después del registro
-                val usuarioRegistrado = usuariosController.getUsuarioById(idUsuario)
-                if (usuarioRegistrado != null) {
-                    val intent = Intent(this, MainActivity::class.java)
-                    Toast.makeText(this, "¡Bienvenido ${usuarioRegistrado.nombre}!", Toast.LENGTH_SHORT).show()
-                    UsuariosController.SessionManager.setCurrentUser(usuarioRegistrado)
-                    startActivity(intent)
-                    finish()
-                }
-            } else {
-                Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
-            }
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
         }
     }
 }
