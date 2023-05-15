@@ -44,9 +44,9 @@ class UsuariosAdapter(private val mContext: Context, private val listaUsuarios: 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val usuario = listaUsuarios[position]
 
-        holder.binding.lblNombre.text = usuario.nombre
+        holder.binding.Nombre.text = usuario.nombre
         holder.binding.tipo.text = usuario.tipo
-        holder.binding.lblApellidos.text = usuario.apellido.toString()
+        holder.binding.id.text = usuario.id.toString()
 
         holder.binding.btnModificar.setOnClickListener {
             val navController = (mContext as AppCompatActivity).findNavController(R.id.nav_host_fragment_content_main)
@@ -74,9 +74,13 @@ class UsuariosAdapter(private val mContext: Context, private val listaUsuarios: 
         val binding = ItemlistUsuariosCrudBinding.bind(itemView)
 
         fun bind(usuario: Usuario, position: Int) {
-            binding.lblNombre.text = usuario.nombre
+            binding.Nombre.text = usuario.nombre
             binding.tipo.text = usuario.tipo
-            binding.lblApellidos.text = usuario.apellido.toString()
+            binding.id.text = usuario.id.toString()
+
+
+
+
             binding.btnEliminar.setOnClickListener {
                 eliminarItem(position)
             }

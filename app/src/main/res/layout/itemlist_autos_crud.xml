@@ -10,8 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/imgColor"
@@ -20,7 +19,7 @@
             app:srcCompat="@drawable/ic_menu_gallery" />
 
         <TextView
-            android:id="@+id/lblMarka"
+            android:id="@+id/Nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Marca"
@@ -29,7 +28,7 @@
             android:translationX="130dp" />
 
         <TextView
-            android:id="@+id/lblModel"
+            android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Modelo"
@@ -37,7 +36,7 @@
             android:translationY="20dp" />
 
         <TextView
-            android:id="@+id/lblAnyo"
+            android:id="@+id/edad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Año"

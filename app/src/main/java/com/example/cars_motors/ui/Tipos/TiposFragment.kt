@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.controladores.TiposAutomovilController
 import com.example.cars_motors.databinding.FragmentTiposBinding
-import com.example.cars_motors.ui.Tipo.TiposAdapter
 
 class TiposFragment : Fragment() {
 

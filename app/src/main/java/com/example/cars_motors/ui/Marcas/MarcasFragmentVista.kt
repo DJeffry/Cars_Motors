@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.cars_motors.controladores.MarcasController
 import com.example.cars_motors.databinding.VistaMarcasBinding
 
-class MarcasFragmentVista : Fragment() {
+class MarcasVistaFragment : Fragment() {
     private var _binding: VistaMarcasBinding? = null
     private val binding get() = _binding!!
 
@@ -22,15 +22,19 @@ class MarcasFragmentVista : Fragment() {
         val root: View = binding.root
 
         val MarcasController = MarcasController(requireContext())
-        val idMarca = arguments?.getInt("idMarca") ?: 0
-        val color= MarcasController.getMarcaById(idMarca)
+        val idUsuario = arguments?.getInt("idUsuario") ?: 0
+        Log.d("MarcasVistaFragment", "ID del usuario: $idUsuario")
+        val usuario = MarcasController.getUsuarioById(idUsuario)
 
 
-        if (color != null) {
-            binding.lblNombre.text = color.nombre
-            val nombre=color.nombre
-            Log.d("MarcasVistaFragment", "ID del color: $nombre")
-            binding.lblNombre.text = color.nombre.toString()
+        if (usuario != null) {
+            binding.lblNombre.text = usuario.nombre
+            val nombre=usuario.nombre
+            Log.d("MarcasVistaFragment", "ID del usuario: $nombre")
+            binding.lblApellidos.text = usuario.apellido
+            binding.lblEmail.text = usuario.email
+            binding.lblUser.text = usuario.user
+            binding.lblTipo.text = usuario.tipo
         }
 
         return root

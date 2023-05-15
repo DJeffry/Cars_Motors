@@ -20,7 +20,7 @@ class MarcasController(context: Context) {
     }
 
     @SuppressLint("Range")
-    fun getMarcaById(id: Int?): Marca? {
+    fun getMarcaById(id: Int): Marca? {
         val cursor = db.query(
             "marcas", arrayOf("idmarca", "nombre"), "idmarca = ?",
             arrayOf(id.toString()), null, null, null

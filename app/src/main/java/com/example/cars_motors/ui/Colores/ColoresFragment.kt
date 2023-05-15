@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cars_motors.controladores.ColoresController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.databinding.FragmentColoresBinding
-import com.example.cars_motors.ui.ColorModel.ColoresAdapter
 
 class ColoresFragment : Fragment() {
 

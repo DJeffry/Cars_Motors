@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_motors.controladores.MarcasController
 import com.example.cars_motors.databinding.FragmentMarcasBinding
 import com.example.cars_motors.ui.Favoritos.FavoritosAdapter
-import com.example.cars_motors.ui.Marca.MarcasAdapter
 
 class MarcasFragment : Fragment() {
 
